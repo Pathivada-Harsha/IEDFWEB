@@ -1,0 +1,669 @@
+.invest-philosophy {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: visible;
+  min-height: 100vh;
+}
+
+/* Global Bubble Background */
+.global-bubble-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bubble-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.layer-1 {
+  z-index: 0;
+}
+
+.layer-2 {
+  z-index: 1;
+  animation: layerFloat 25s ease-in-out infinite;
+}
+
+@keyframes layerFloat {
+  0%,
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: translateX(20px) translateY(-15px);
+  }
+}
+
+.floating-bubble {
+  position: absolute;
+  border-radius: 50%;
+background: radial-gradient(circle at 30% 30%, rgba(47, 174, 110, 0.12), rgba(32, 178, 170, 0.03));
+  animation: floatBubble 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Bubble Sizes */
+.bubble-xl {
+  width: 200px;
+  height: 200px;
+}
+
+.bubble-lg {
+  width: 120px;
+  height: 120px;
+}
+
+.bubble-md {
+  width: 80px;
+  height: 80px;
+}
+
+.bubble-sm {
+  width: 50px;
+  height: 50px;
+}
+
+/* Bubble Positions and Animations */
+.bubble-1 {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+  animation-duration: 20s;
+}
+
+.bubble-2 {
+  top: 20%;
+  right: 10%;
+  animation-delay: 3s;
+  animation-duration: 18s;
+}
+
+.bubble-3 {
+  top: 50%;
+  left: 15%;
+  animation-delay: 6s;
+  animation-duration: 16s;
+}
+
+.bubble-4 {
+  top: 70%;
+  right: 20%;
+  animation-delay: 2s;
+  animation-duration: 14s;
+}
+
+.bubble-5 {
+  bottom: 20%;
+  left: 25%;
+  animation-delay: 8s;
+  animation-duration: 22s;
+}
+
+.bubble-6 {
+  top: 30%;
+  left: 60%;
+  animation-delay: 4s;
+  animation-duration: 17s;
+}
+
+.bubble-7 {
+  bottom: 40%;
+  right: 5%;
+  animation-delay: 7s;
+  animation-duration: 13s;
+}
+
+.bubble-8 {
+  bottom: 10%;
+  right: 40%;
+  animation-delay: 1s;
+  animation-duration: 19s;
+}
+
+.bubble-9 {
+  top: 40%;
+  left: 40%;
+  animation-delay: 5s;
+  animation-duration: 21s;
+}
+
+.bubble-10 {
+  top: 80%;
+  left: 70%;
+  animation-delay: 9s;
+  animation-duration: 15s;
+}
+
+.bubble-11 {
+  top: 60%;
+  right: 30%;
+  animation-delay: 2.5s;
+  animation-duration: 16s;
+}
+
+.bubble-12 {
+  bottom: 30%;
+  left: 80%;
+  animation-delay: 6.5s;
+  animation-duration: 18s;
+}
+
+@keyframes floatBubble {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) rotate(90deg) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-15px) rotate(180deg) scale(0.9);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(-20px) translateX(25px) rotate(270deg) scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.philosophy-layout {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+  min-height: auto;
+  transition: all 0.3s ease;
+}
+
+/* Left Sticky Content - Enhanced Sticky Behavior */
+.sticky-content {
+  flex: 0 0 45%;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  align-self: flex-start;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  z-index: 20;
+  will-change: transform;
+  transition: all 0.3s ease;
+}
+
+.sticky-inner {
+  position: relative;
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+  z-index: 20;
+}
+
+.philosophy-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #20B2AA;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #20B2AA;
+  border-radius: 50%;
+}
+
+.philosophy-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.philosophy-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Right Scrollable Content */
+.scrollable-content {
+  flex: 1;
+  padding-left: 40px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 15;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 50px;
+}
+
+.philosophy-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(178, 34, 34, 0.05);
+}
+
+.philosophy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(178, 34, 34, 0.15);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.card-icon {
+  position: relative;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #20B2AA, #20b27a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.icon-emoji {
+  font-size: 1.5rem;
+  filter: grayscale(1) brightness(0) invert(1);
+}
+
+.icon-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(29, 244, 219, 0.7);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring-1 {
+  width: 80px;
+  height: 80px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.ring-2 {
+  width: 100px;
+  height: 100px;
+  animation: pulse 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+  .philosophy-layout {
+    gap: 60px;
+  }
+
+  .sticky-content {
+    top: 60px;
+  }
+
+  .scrollable-content {
+    padding-left: 20px;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .philosophy-title {
+    font-size: 2.2rem;
+  }
+
+  .philosophy-grid {
+    gap: 30px;
+  }
+
+  .philosophy-card {
+    padding: 35px 25px;
+  }
+
+  /* Reduce bubble sizes on tablet */
+  .bubble-xl {
+    width: 150px;
+    height: 150px;
+  }
+
+  .bubble-lg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Mobile Layout - Completely non-sticky */
+@media (max-width: 768px) {
+  .invest-philosophy {
+    padding: 40px 0;
+  }
+
+  .philosophy-layout {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  /* Mobile layout specific class */
+  .philosophy-layout.mobile-layout {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .sticky-content {
+    position: static !important;
+    flex: none !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    order: 1 !important;
+    margin-bottom: 20px !important;
+    top: auto !important;
+    height: auto !important;
+    align-self: auto !important;
+    will-change: auto !important;
+    padding-left: 0 !important;
+  }
+
+  /* Mobile header specific styling */
+  .sticky-content.mobile-header {
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    will-change: auto !important;
+    order: 1 !important;
+    flex: none !important;
+  }
+
+  .sticky-inner {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 30px 20px;
+    /* Remove card-like appearance on mobile */
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .philosophy-badge {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .philosophy-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .philosophy-description {
+    font-size: 1rem;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .scrollable-content {
+    padding-left: 0 !important;
+    min-height: auto !important;
+    order: 2 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding-bottom: 50px;
+  }
+
+  .philosophy-card {
+    padding: 30px 25px;
+  }
+
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-emoji {
+    font-size: 1.2rem;
+  }
+
+  .ring-1 {
+    width: 70px;
+    height: 70px;
+  }
+
+  .ring-2 {
+    width: 85px;
+    height: 85px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  /* Reduce bubbles on mobile */
+  .bubble-xl {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bubble-lg {
+    width: 70px;
+    height: 70px;
+  }
+
+  .bubble-md {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bubble-sm {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Hide some bubbles on mobile for performance */
+  .bubble-8,
+  .bubble-9,
+  .bubble-10,
+  .bubble-11,
+  .bubble-12 {
+    display: none;
+  }
+}
+
+/* Extra small screens - Completely non-sticky */
+@media (max-width: 480px) {
+  .invest-philosophy {
+    padding: 20px 0;
+  }
+
+  .philosophy-layout {
+    gap: 25px !important;
+    flex-direction: column !important;
+  }
+
+  .sticky-content {
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    will-change: auto !important;
+    flex: none !important;
+    order: 1 !important;
+    padding-left: 0 !important;
+  }
+
+  .sticky-inner {
+    padding: 25px 15px;
+    /* Remove card-like appearance on mobile */
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .philosophy-badge {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+  }
+
+  .philosophy-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .philosophy-description {
+    font-size: 0.9rem;
+  }
+
+  .scrollable-content {
+    padding-left: 0 !important;
+    min-height: auto !important;
+    order: 2 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .philosophy-card {
+    padding: 25px 20px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+  }
+
+  .icon-wrapper {
+    width: 45px;
+    height: 45px;
+  }
+
+  .icon-emoji {
+    font-size: 1.1rem;
+  }
+
+  .ring-1 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ring-2 {
+    width: 75px;
+    height: 75px;
+  }
+}

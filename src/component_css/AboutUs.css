@@ -1,0 +1,831 @@
+.About-about-us {
+  background: #ffffff;
+}
+
+/* Hero Section */
+.About-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.About-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.About-hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.About-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(52, 135, 231, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.About-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.About-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.About-hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.About-hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.About-hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 12px 24px;
+}
+
+.About-badge-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Common Section Styles */
+.About-section-header {
+  margin-bottom: 60px;
+}
+
+.About-center {
+  text-align: center;
+}
+
+.About-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.About-section-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.About-section-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.About-reverse {
+  direction: rtl;
+}
+
+.About-reverse > * {
+  direction: ltr;
+}
+
+.About-section-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Scope Section */
+.About-scope {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.About-scope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 20%, rgba(28, 166, 154, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(28, 166, 154, 0.02) 0%, transparent 50%);
+  background-size: 800px 800px;
+  animation: backgroundFloat 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes backgroundFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(20px, -20px) rotate(1deg);
+  }
+}
+
+.About-scope-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.About-scope-content {
+  max-width: 500px;
+}
+
+.About-scope-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1CA69A;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  /* margin-bottom: 20px; */
+  background: rgba(28, 166, 154, 0.08);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(28, 166, 154, 0.15);
+}
+
+.About-badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #1CA69A;
+  border-radius: 50%;
+}
+
+/* Visual Side */
+.About-scope-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.About-scope-image-container {
+  position: relative;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s ease;
+}
+
+.About-scope-image-container.About-animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.About-scope-diagram {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 30px;
+}
+
+/* Responsive Design Updates */
+@media (max-width: 1024px) {
+  .About-scope-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .About-scope-content {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .About-scope {
+    padding: 80px 0;
+  }
+
+  .About-scope-layout {
+    gap: 40px;
+  }
+
+  .About-scope-diagram {
+    max-width: 400px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .About-scope-diagram {
+    max-width: 300px;
+    padding: 15px;
+  }
+}
+
+/* Team Section */
+.About-team {
+  padding: 100px 0;
+  background: #f8fafc;
+}
+
+.About-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.About-team-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 2px solid #e5e7eb;
+}
+
+.About-team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(28, 166, 154, 0.15);
+  border-color: #1CA69A;
+}
+
+.About-team-image {
+  height: 250px;
+  overflow: hidden;
+}
+
+.About-team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.About-team-content {
+  padding: 30px;
+}
+
+.About-team-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+.About-team-position {
+  font-size: 1rem;
+  color: #1CA69A;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.About-team-experience {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.About-team-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Funnel Section */
+.About-funnel {
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+  background: none; /* remove background from main element */
+}
+
+.About-funnel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/Home_hero/bg_9.png') no-repeat center center;
+  background-size: cover;
+  opacity: 0.09; /* adjust opacity here */
+  z-index: -1;
+}
+
+.About-funnel-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px; /* Reduced from 80px */
+  align-items: center;
+}
+
+.About-funnel-content {
+  max-width: 450px; /* Reduced from 500px */
+}
+
+.About-funnel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1CA69A;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px; /* Reduced from 20px */
+  background: rgba(28, 166, 154, 0.08);
+  padding: 6px 14px; /* Reduced padding */
+  border-radius: 20px;
+  border: 1px solid rgba(28, 166, 154, 0.15);
+}
+
+/* Visual Side - Compact Image Display */
+.About-funnel-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.About-funnel-image-container {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  width: 100%;
+  max-width: 400px; /* Set maximum width for image container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.About-funnel-image-container.About-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.About-funnel-diagram {
+  width: 100%;
+  height: auto;
+  max-width: 400px; /* Reduced from none to 400px */
+  max-height: 700px; /* Added max-height to prevent too tall images */
+  object-fit: contain; /* Ensures full image is visible */
+  border-radius: 0; /* Removed border radius */
+  box-shadow: none; /* Removed shadow */
+  background: transparent;
+  display: block;
+}
+
+/* Section header adjustments for compactness */
+.About-funnel .About-section-title {
+  font-size: 2.2rem; /* Slightly reduced */
+  margin-bottom: 15px; /* Reduced margin */
+}
+
+.About-funnel .About-section-description {
+  font-size: 1rem; /* Slightly reduced */
+  line-height: 1.5; /* Tighter line height */
+}
+
+/* Responsive Design for Funnel - Updated for compactness */
+@media (max-width: 1024px) {
+  .About-funnel-layout {
+    grid-template-columns: 1fr;
+    gap: 40px; /* Reduced gap */
+    text-align: center;
+  }
+
+  .About-funnel-content {
+    max-width: none;
+    order: 1;
+  }
+
+  .About-funnel-visual {
+    order: 2;
+    width: 100%;
+  }
+
+  .About-funnel-image-container {
+    width: 100%;
+    max-width: 450px; /* Slightly larger on tablet */
+    margin: 0 auto;
+  }
+
+  .About-funnel-diagram {
+    max-width: 450px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .About-funnel {
+    padding: 60px 0; /* Further reduced padding */
+  }
+
+  .About-funnel-layout {
+    gap: 30px; /* Reduced gap */
+  }
+
+  .About-funnel-image-container {
+    max-width: 350px; /* Smaller on mobile */
+  }
+
+  .About-funnel-diagram {
+    max-width: 350px;
+    max-height: 350px;
+  }
+
+  .About-funnel .About-section-title {
+    font-size: 1.8rem;
+  }
+
+  .About-funnel .About-section-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .About-funnel {
+    padding: 50px 0; /* Further reduced */
+  }
+
+  .About-funnel-image-container {
+    max-width: 300px;
+  }
+
+  .About-funnel-diagram {
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .About-funnel .About-section-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .About-funnel-image-container {
+    max-width: 280px;
+  }
+
+  .About-funnel-diagram {
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .About-section-layout {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .About-reverse {
+    direction: ltr;
+  }
+
+  .About-team-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .About-hero-title {
+    font-size: 3rem;
+  }
+
+  .About-section-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .About-hero {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .About-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .About-hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .About-scope,
+  .About-team,
+  .About-funnel {
+    padding: 60px 0;
+  }
+
+  .About-section-header {
+    margin-bottom: 40px;
+  }
+
+  .About-section-title {
+    font-size: 1.8rem;
+  }
+
+  .About-section-description {
+    font-size: 1rem;
+  }
+
+  .About-team-content {
+    padding: 25px;
+  }
+
+  .About-funnel-step {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .About-funnel-arrow {
+    position: static;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .About-hero-title {
+    font-size: 2rem;
+  }
+
+  .About-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .About-section-title {
+    font-size: 1.6rem;
+  }
+
+  .About-team-content {
+    padding: 20px;
+  }
+
+  .About-funnel-number {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+}
+/* Mission & Vision Section Styles */
+.About-mission-vision-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.About-mission-vision-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 25px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+  border: 2px solid #f1f5f9;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.About-mission-vision-item:hover {
+  border-color: #1CA69A;
+  box-shadow: 0 4px 20px rgba(28, 166, 154, 0.12);
+  transform: translateY(-1px);
+}
+
+.About-mv-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, rgba(28, 166, 154, 0.1), rgba(46, 139, 87, 0.1));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(28, 166, 154, 0.2);
+}
+
+.About-mv-content {
+  flex: 1;
+}
+
+.About-mv-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1CA69A;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.About-mv-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin: 0;
+}
+
+.About-mv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.About-mv-list li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-bottom: 8px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.About-mv-list li:before {
+  content: "●";
+  color: #1CA69A;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.About-mv-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Updated Scope Section Styles for Compact Layout */
+.About-scope {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.About-scope-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.About-scope-content {
+  max-width: 100%;
+}
+
+.About-section-header {
+  margin-bottom: 25px;
+}
+
+/* Responsive adjustments for Mission & Vision */
+@media (max-width: 1024px) {
+  .About-scope-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .About-mission-vision-item {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .About-scope-content {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .About-scope {
+    padding: 60px 0;
+  }
+
+  .About-scope-layout {
+    gap: 30px;
+  }
+
+  .About-mission-vision-container {
+    margin-top: 20px;
+    gap: 12px;
+  }
+
+  .About-mission-vision-item {
+    padding: 18px 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .About-mv-icon {
+    margin: 0 auto;
+    width: 38px;
+    height: 38px;
+  }
+
+  .About-mv-title {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .About-mv-description,
+  .About-mv-list li {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .About-mv-list li {
+    padding-left: 16px;
+    margin-bottom: 6px;
+  }
+
+  .About-section-header {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .About-mission-vision-container {
+    margin-top: 18px;
+    gap: 10px;
+  }
+
+  .About-mission-vision-item {
+    padding: 15px 10px;
+    width:auto;
+  }
+
+  .About-mv-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .About-mv-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .About-mv-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  .About-mv-description,
+  .About-mv-list li {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .About-mv-list li {
+    padding-left: 14px;
+    margin-bottom: 5px;
+  }
+
+  .About-section-header {
+    margin-bottom: 18px;
+  }
+}
