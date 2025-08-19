@@ -14,24 +14,48 @@ const ContactUs = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+    
+    // Special handling for phone number
+    if (name === "phone") {
+      // Remove all non-digit characters
+      const numericValue = value.replace(/\D/g, "")
+      
+      // Limit to 10 digits
+      const limitedValue = numericValue.slice(0, 10)
+      
+      setFormData((prev) => ({
+        ...prev,
+        [name]: limitedValue,
+      }))
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }))
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    // Validate phone number if provided
+    if (formData.phone && formData.phone.length !== 10) {
+      alert("Phone number must be exactly 10 digits")
+      setIsSubmitting(false)
+      return
+    }
 
     console.log('Submitting contact form data:', formData)
 
     try {
-      // Point to your PHP server (XAMPP typically runs on port 80)
-      const url = 'http://localhost/iedf-contactus.php'
+      // Get the API URL from environment variable
+      const url = process.env.REACT_APP_API || "http://localhost/iedf-contact-form.php"
       
       console.log('Sending request to:', url)
 
@@ -46,15 +70,13 @@ const ContactUs = () => {
       console.log('Response status:', response.status)
       console.log('Response ok:', response.ok)
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-
       const result = await response.json()
       console.log('Response data:', result)
 
       if (result.success) {
+        setSubmitStatus('success')
         alert("Thank you for reaching out! We'll get back to you within 24 hours.")
+        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -64,21 +86,16 @@ const ContactUs = () => {
           message: "",
         })
       } else {
+        setSubmitStatus('error')
         console.error('Server error:', result)
         alert("Error: " + (result.error || 'Unknown error occurred'))
-        
-        // Log debug info if available
-        if (result.debug) {
-          console.log('Debug info:', result.debug)
-        }
       }
     } catch (error) {
       console.error('Fetch error:', error)
+      setSubmitStatus('error')
       
       if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        alert("Network error: Unable to connect to server. Please check if the server is running on http://localhost/")
-      } else if (error.message.includes('HTTP error')) {
-        alert(`Server error: ${error.message}`)
+        alert("Network error: Unable to connect to server. Please check if the server is running and CORS is properly configured.")
       } else {
         alert("Failed to submit form. Error: " + error.message)
       }
@@ -181,7 +198,7 @@ const ContactUs = () => {
                 <form className="Contact-form" onSubmit={handleSubmit}>
                   <div className="Contact-form-row">
                     <div className="Contact-form-group">
-                      <label htmlFor="name">Full Name *</label>
+                      <label htmlFor="name">Full Name <span style={{color:"red"}}>*</span></label>
                       <input
                         type="text"
                         id="name"
@@ -190,10 +207,11 @@ const ContactUs = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="Enter your full name"
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="Contact-form-group">
-                      <label htmlFor="email">Email Address *</label>
+                      <label htmlFor="email">Email Address <span style={{color:"red"}}>*</span></label>
                       <input
                         type="email"
                         id="email"
@@ -202,21 +220,31 @@ const ContactUs = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="your.email@example.com"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
 
                   <div className="Contact-form-row">
                     <div className="Contact-form-group">
-                      <label htmlFor="phone">Phone Number</label>
+                      <label htmlFor="phone">Phone Number </label>
                       <input
-                        type="tel"
+                        type="text"
                         id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="+91 98765 43210"
+                        placeholder="Enter You Contact Number"
+                        maxLength="10"
+                        pattern="[0-9]{10}"
+                        title="Please enter exactly 10 digits"
+                        disabled={isSubmitting}
                       />
+                      {formData.phone && formData.phone.length > 0 && formData.phone.length < 10 && (
+                        <small style={{ color: '#e74c3c', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                          Phone number must be exactly 10 digits ({formData.phone.length}/10)
+                        </small>
+                      )}
                     </div>
                     <div className="Contact-form-group">
                       <label htmlFor="company">Company Name</label>
@@ -227,13 +255,21 @@ const ContactUs = () => {
                         value={formData.company}
                         onChange={handleInputChange}
                         placeholder="Your company name"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
 
                   <div className="Contact-form-group">
-                    <label htmlFor="subject">Subject *</label>
-                    <select id="subject" name="subject" value={formData.subject} onChange={handleInputChange} required>
+                    <label htmlFor="subject">Subject <span style={{color:"red"}}>*</span></label>
+                    <select 
+                      id="subject" 
+                      name="subject" 
+                      value={formData.subject} 
+                      onChange={handleInputChange} 
+                      required
+                      disabled={isSubmitting}
+                    >
                       <option value="">Select a subject</option>
                       <option value="investment-inquiry">Investment Inquiry</option>
                       <option value="partnership">Partnership Opportunity</option>
@@ -245,7 +281,7 @@ const ContactUs = () => {
                   </div>
 
                   <div className="Contact-form-group">
-                    <label htmlFor="message">Message *</label>
+                    <label htmlFor="message">Message <span style={{color:"red"}}>*</span></label>
                     <textarea
                       id="message"
                       name="message"
@@ -254,6 +290,7 @@ const ContactUs = () => {
                       rows="6"
                       required
                       placeholder="Tell us about your idea, project, or how we can help you..."
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
 
